@@ -6,6 +6,8 @@
   <welcome-file-list>
     <welcome-file>/WEB-INF/Views/success.jsp</welcome-file>
   </welcome-file-list>
+
+
   <!-- Spring MVC配置 -->
   <servlet>
     <servlet-name>spring</servlet-name>
@@ -35,7 +37,7 @@
   <!-- 指定Spring Bean的配置文件所在目录。默认配置在WEB-INF目录下 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:applicationContext.xml</param-value>
+    <param-value>classpath:spring-mybatis.xml</param-value>
   </context-param>
 
 </web-app>

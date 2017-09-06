@@ -8,7 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+    <meta name="author" content="niko">
+    <%--每30秒中刷新当前页面:--%>
+    <meta http-equiv="refresh" content="30">
+
+    <title> WELCOME </title>
+    <style type="text/css">
+
+
+
+    </style>
 </head>
 <body>
 
