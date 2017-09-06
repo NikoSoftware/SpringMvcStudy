@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="springmvc.dao.PersonInfoMapper" >
+    <!--<resultMap id="BaseResultMap" type="springmvc.model.PersonInfo" >-->
+        <!--<id property="id" column="id"></id>-->
+        <!--<result property="name" column="name"></result>-->
+        <!--<association property="website" javaType="springmvc.model.Websites" >-->
+            <!--<id property="id" column="id"></id>-->
+            <!--<result property="url" column="url"></result>-->
+            <!--<result property="alexa" column="alexa"></result>-->
+            <!--<result property="country" column="country"></result>-->
+        <!--</association>-->
+    <!--</resultMap>-->
+
+    <select id="selectPersonInfoById" parameterType="int" resultType="springmvc.model.PersonInfo">
+
+        SELECT
+        person.id as id,
+        person.name  as name,
+        person.websiteId as websiteId,
+        websites.url as url,
+        websites.alexa as alexa,
+        websites.country as country
+        from person
+        LEFT JOIN websites on person.websiteId = websites.id
+        WHERE person.id = #{id}
+
+
+    </select>
+
+
+
+
+
+</mapper>

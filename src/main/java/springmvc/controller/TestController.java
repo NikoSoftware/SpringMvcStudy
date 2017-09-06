@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import springmvc.model.Person;
+import springmvc.model.PersonInfo;
+import springmvc.service.PersonInfoService;
 import springmvc.service.PersonService;
 
 import javax.annotation.Resource;
@@ -18,6 +20,9 @@ public class TestController {
 
     @Resource
     private PersonService personService;
+
+    @Resource
+    private PersonInfoService personInfoService;
 
     //访问地址：http://localhost:8080/Test/returnSuccess
     @RequestMapping(value = "returnSuccess")    //实际访问的url地址
@@ -48,6 +53,18 @@ public class TestController {
         return modelAndView;
     }
 
+
+    //访问地址：http://localhost:8080/Test/getPersonInfo?id=1
+    @RequestMapping(value = "getPersonInfo")
+    public ModelAndView getPersonInfo(@RequestParam("id") int id){
+
+       PersonInfo personInfo =  personInfoService.getPersonInfo(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("personInfo",personInfo);
+        modelAndView.setViewName("personInfoView");
+
+        return modelAndView;
+    }
 
 
 

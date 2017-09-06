@@ -42,16 +42,18 @@
     <tr>
         <td>id</td>
         <td>name</td>
-        <td>websiteId</td>
+        <td>url</td>
+        <td>alexa</td>
+        <td>country</td>
     </tr>
-    <c:forEach var="person" items="${persons}" varStatus="status">
-        <tr>
-            <td>${person.id}</td>
-            <td>${person.name}</td>
-            <td>${person.websiteid}</td>
 
+        <tr>
+            <td>${personInfo.id}</td>
+            <td>${personInfo.name}</td>
+            <td>${personInfo.url}</td>
+            <td>${personInfo.alexa}</td>
+            <td>${personInfo.country}</td>
         </tr>
-    </c:forEach>
 
 
 </table>
