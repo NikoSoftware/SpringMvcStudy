@@ -44,7 +44,22 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
     </bean>
 
 
-    <!-- 访问静态文件（jpg,js,css）的方法 -->
+    <!--拦截器配置-->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <ref bean="handlerInterceptor1"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="handlerInterceptor1" class="springmvc.interceptor.HandlerInterceptor1"/>
+
+
+
+
+    <!-- 访问静态文件（jpg,js,css）的方法，该配置的作用是：DispatcherServlet不会拦截以此配置开头的所有请求路径，
+    并当作静态资源交由Servlet处理。 -->
     <mvc:resources location="/WEB-INF/files/" mapping="/files/**" />
     <mvc:resources location="/WEB-INF/scripts/" mapping="/scripts/**" />
     <mvc:resources location="/WEB-INF/styles/" mapping="/styles/**" />

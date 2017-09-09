@@ -5,7 +5,7 @@ public class PersonInfo {
 
     private String name;
 
-    private Person websiteid;
+    private Websites websites;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,12 @@ public class PersonInfo {
         this.name = name;
     }
 
-    public Person getWebsiteid() {
-        return websiteid;
+
+    public Websites getWebsites() {
+        return websites;
     }
 
-    public void setWebsiteid(Person websiteid) {
-        this.websiteid = websiteid;
+    public void setWebsites(Websites websites) {
+        this.websites = websites;
     }
 }

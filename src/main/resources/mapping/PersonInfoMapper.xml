@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="springmvc.dao.PersonInfoMapper" >
+
+    <!-- 一对一查询 -->
     <resultMap id="BaseResultMap" type="springmvc.model.PersonInfo" >
         <id property="id" column="id"></id>
         <result property="name" column="name"></result>
-        <association property="websiteid" javaType="springmvc.model.Websites" >
-            <id property="id" column="id"></id>
+        <association property="websites" javaType="springmvc.model.Websites" >
+            <id property="id" column="websiteId"></id>
             <result property="url" column="url"></result>
             <result property="alexa" column="alexa"></result>
             <result property="country" column="country"></result>
