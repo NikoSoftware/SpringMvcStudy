@@ -7,10 +7,13 @@ public class Person {
 
     private Integer websiteid;
 
-    public Person(Integer id, String name, Integer websiteid) {
+    private String password;
+
+    public Person(Integer id, String name, Integer websiteid, String password) {
         this.id = id;
         this.name = name;
         this.websiteid = websiteid;
+        this.password = password;
     }
 
     public Person() {
@@ -39,5 +42,13 @@ public class Person {
 
     public void setWebsiteid(Integer websiteid) {
         this.websiteid = websiteid;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 }

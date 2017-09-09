@@ -50,9 +50,9 @@
         <tr>
             <td>${personInfo.id}</td>
             <td>${personInfo.name}</td>
-            <td>${personInfo.url}</td>
-            <td>${personInfo.alexa}</td>
-            <td>${personInfo.country}</td>
+            <td>${personInfo.websiteid.url}</td>
+            <td>${personInfo.websiteid.alexa}</td>
+            <td>${personInfo.websiteid.country}</td>
         </tr>
 
 

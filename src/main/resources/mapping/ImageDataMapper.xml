@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="springmvc.dao.ImageDataMapper">
+  <resultMap id="BaseResultMap" type="springmvc.model.ImageData">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="imagePath" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, imagePath
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from imageData
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from imageData
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="springmvc.model.ImageData">
+    insert into imageData (id, imagePath)
+    values (#{id,jdbcType=INTEGER}, #{imagepath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="springmvc.model.ImageData">
+    insert into imageData
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="imagepath != null">
+        imagePath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="imagepath != null">
+        #{imagepath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="springmvc.model.ImageData">
+    update imageData
+    <set>
+      <if test="imagepath != null">
+        imagePath = #{imagepath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="springmvc.model.ImageData">
+    update imageData
+    set imagePath = #{imagepath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAllImage" resultMap="BaseResultMap">
+
+    SELECT <include refid="Base_Column_List"></include>
+    FROM
+    imageData
+
+  </select>
+
+
+</mapper>

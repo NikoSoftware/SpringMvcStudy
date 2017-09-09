@@ -56,6 +56,16 @@
 
 </table>
 
+<hr>
+
+<h4>图片上传</h4>
+
+<form action="/Test/updateImage" method="post" enctype="multipart/form-data">
+
+    选择文件：<input type="file" name="imageFile">
+    <input type="submit" value="提交">
+
+</form>
 
 </body>
 </html>

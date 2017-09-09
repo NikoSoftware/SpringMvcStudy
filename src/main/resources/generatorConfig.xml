@@ -79,5 +79,11 @@
                selectByExampleQueryId="false">
         </table>
 
+        <table tableName="imageData" domainObjectName="ImageData"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
     </context>
 </generatorConfiguration>

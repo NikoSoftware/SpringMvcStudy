@@ -5,22 +5,7 @@ public class PersonInfo {
 
     private String name;
 
-    private Integer websiteid;
-
-    private String url;
-
-    private Integer alexa;
-
-    private String country;
-
-    public PersonInfo(Integer id, String name, Integer websiteid, String url, Integer alexa, String country) {
-        this.id = id;
-        this.name = name;
-        this.websiteid = websiteid;
-        this.url = url;
-        this.alexa = alexa;
-        this.country = country;
-    }
+    private Person websiteid;
 
     public Integer getId() {
         return id;
@@ -38,35 +23,11 @@ public class PersonInfo {
         this.name = name;
     }
 
-    public Integer getWebsiteid() {
+    public Person getWebsiteid() {
         return websiteid;
     }
 
-    public void setWebsiteid(Integer websiteid) {
+    public void setWebsiteid(Person websiteid) {
         this.websiteid = websiteid;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Integer getAlexa() {
-        return alexa;
-    }
-
-    public void setAlexa(Integer alexa) {
-        this.alexa = alexa;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 }

@@ -5,13 +5,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import springmvc.model.ImageData;
 import springmvc.model.Person;
 import springmvc.model.PersonInfo;
+import springmvc.service.ImageDataService;
 import springmvc.service.PersonInfoService;
 import springmvc.service.PersonService;
+import springmvc.serviceimpl.ImageDataServiceImpl;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,6 +31,9 @@ public class TestController {
 
     @Resource
     private PersonInfoService personInfoService;
+
+    @Resource
+    private ImageDataService imageDataService;
 
     //访问地址：http://localhost:8080/Test/returnSuccess
     @RequestMapping(value = "returnSuccess")    //实际访问的url地址
@@ -65,6 +76,47 @@ public class TestController {
 
         return modelAndView;
     }
+
+
+
+    //文件上传地址:http://localhost:8080/Test/updateImage
+    @RequestMapping(value = "updateImage",method = {RequestMethod.POST})
+    public ModelAndView updateImage(@RequestParam("imageFile") MultipartFile imageFile,HttpServletRequest request) {
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        if(!imageFile.isEmpty()){
+            String relativePath = "/img/"+imageFile.getOriginalFilename();
+            String imagePath = request.getSession().getServletContext().getRealPath("/")+"WEB-INF" + relativePath;
+
+            try {
+                imageFile.transferTo(new File(imagePath));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            ImageData imageData = new ImageData();
+            imageData.setImagepath(relativePath);
+
+            imageDataService.insertSelective(imageData);
+
+            List<ImageData> imageDatas = imageDataService.selectAllImage();
+           String basePath = "http://localhost:8080";
+            for (ImageData data : imageDatas) {
+               System.out.println(data.getImagepath());
+            }
+
+            modelAndView.addObject("imageDatas",imageDatas);
+            modelAndView.addObject("basePath",basePath);
+            modelAndView.setViewName("imagesDisplay");
+            return modelAndView;
+        }else{
+            modelAndView.setViewName("error");
+            return modelAndView;
+        }
+
+    }
+
 
 
 

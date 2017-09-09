@@ -6,10 +6,11 @@
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="websiteId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, websiteId
+    id, name, websiteId, password
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,10 +23,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="springmvc.model.Person" >
-    insert into person (id, name, websiteId
-      )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{websiteid,jdbcType=INTEGER}
-      )
+    insert into person (id, name, websiteId, 
+      password)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{websiteid,jdbcType=INTEGER}, 
+      #{password,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="springmvc.model.Person" >
     insert into person
@@ -39,6 +40,9 @@
       <if test="websiteid != null" >
         websiteId,
       </if>
+      <if test="password != null" >
+        password,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -49,6 +53,9 @@
       </if>
       <if test="websiteid != null" >
         #{websiteid,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -61,22 +68,25 @@
       <if test="websiteid != null" >
         websiteId = #{websiteid,jdbcType=INTEGER},
       </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="springmvc.model.Person" >
     update person
     set name = #{name,jdbcType=VARCHAR},
-      websiteId = #{websiteid,jdbcType=INTEGER}
+      websiteId = #{websiteid,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="selectAllPerson" resultType="springmvc.model.Person">
-    select *
+  <select id="selectAllPerson" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"></include>
+
     FROM person
 
   </select>
 
-  
-  
 </mapper>
