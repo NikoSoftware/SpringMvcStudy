@@ -27,6 +27,7 @@
             float: left;
             width: 200px;
             height: auto;
+            padding: 20px;
         }
 
     </STYLE>

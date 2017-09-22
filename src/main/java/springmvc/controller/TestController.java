@@ -1,10 +1,7 @@
 package springmvc.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import springmvc.model.ImageData;
@@ -115,6 +112,37 @@ public class TestController {
             return modelAndView;
         }
 
+    }
+
+    //获取所有图片:http://localhost:8080/Test/getAllPhotos
+    @RequestMapping(value = "getAllPhotos", method = {RequestMethod.GET})
+    public ModelAndView getAllPhotos(@ModelAttribute("person") Person person){
+
+        ModelAndView modelAndView = new ModelAndView();
+        System.out.println(person.toString());
+
+        List<ImageData> imageDatas = imageDataService.selectAllImage();
+        String basePath = "http://localhost:8080";
+        for (ImageData data : imageDatas) {
+            System.out.println(data.getImagepath());
+        }
+
+        modelAndView.addObject("imageDatas",imageDatas);
+        modelAndView.addObject("basePath",basePath);
+        modelAndView.setViewName("imagesDisplay");
+        return modelAndView;
+    }
+
+
+    //获取所有图片:http://localhost:8080/Test/getMusic
+    @RequestMapping(value = "getMusic",method = {RequestMethod.GET})
+    public ModelAndView getMusic(){
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("musicPath","http://localhost:8080/img/张雨生-最爱的人伤我最深.mp3");
+        modelAndView.setViewName("musicPlay");
+
+        return modelAndView;
     }
 
 

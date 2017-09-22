@@ -51,4 +51,14 @@ public class Person {
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", websiteid=" + websiteid +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
