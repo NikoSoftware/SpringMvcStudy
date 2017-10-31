@@ -18,3 +18,9 @@ spring mvc 学习历程<br>
 >>* 一对一查询
 >>* 一对多查询
 >>* 多对多查询
+
+### Zxing二维码在线生成
+
+* 2017-10-31 ajax 异步加载
+* Zxing 二维码在线生成
+![img](https://github.com/NikoSoftware/SpringMvcStudy/raw/master/img/屏幕快照 2017-10-31 下午4.41.14.png)
