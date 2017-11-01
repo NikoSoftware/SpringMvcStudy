@@ -41,7 +41,7 @@
 
 <c:forEach var="image" items="${imageDatas}" varStatus="status">
 
-    <img class="imgClass" src="${basePath}${image.imagepath}">
+    <img class="imgClass" src="${image.imagepath}">
 
 
 </c:forEach>

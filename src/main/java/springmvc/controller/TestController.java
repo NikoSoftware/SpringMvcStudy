@@ -103,13 +103,13 @@ public class TestController {
             imageDataService.insertSelective(imageData);
 
             List<ImageData> imageDatas = imageDataService.selectAllImage();
-            String basePath = "http://localhost:8080";
+           // String basePath = "http://localhost:8080";
             for (ImageData data : imageDatas) {
                 System.out.println(data.getImagepath());
             }
 
             modelAndView.addObject("imageDatas", imageDatas);
-            modelAndView.addObject("basePath", basePath);
+          //  modelAndView.addObject("basePath", basePath);
             modelAndView.setViewName("imagesDisplay");
             return modelAndView;
         } else {
@@ -127,13 +127,12 @@ public class TestController {
         System.out.println(person.toString());
 
         List<ImageData> imageDatas = imageDataService.selectAllImage();
-        String basePath = "http://localhost:8080";
+       // String basePath = "http://localhost:8080";
         for (ImageData data : imageDatas) {
             System.out.println(data.getImagepath());
         }
 
         modelAndView.addObject("imageDatas", imageDatas);
-        modelAndView.addObject("basePath", basePath);
         modelAndView.setViewName("imagesDisplay");
         return modelAndView;
     }
@@ -144,7 +143,7 @@ public class TestController {
     public ModelAndView getMusic() {
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("musicPath", "http://localhost:8080/img/张雨生-最爱的人伤我最深.mp3");
+        modelAndView.addObject("musicPath", "/img/张雨生-最爱的人伤我最深.mp3");
         modelAndView.setViewName("musicPlay");
 
         return modelAndView;
